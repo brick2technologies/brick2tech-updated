@@ -1,0 +1,79 @@
+@import "tailwindcss";
+/* 
+#0098d4 -- skyblue
+#142c4c -- darkblue
+*/
+
+/* ===============================
+   ANOKHA FONT (TTF)
+================================= */
+
+@font-face {
+  font-family: "Anokha";
+  src: url("./assets/fonts/anokha/Anokha.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+@font-face {
+  font-family: "Anokha";
+  src: url("./assets/fonts/anokha/Anokha-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===============================
+   Custom Class
+================================= */
+
+@layer utilities {
+  .font-anokha {
+    font-family: "Anokha", sans-serif;
+  }
+}
+
+/* ===============================
+   Chillax Font
+================================= */
+@font-face {
+  font-family: "Chillax";
+  src: url("./assets/fonts/chillax/Chillax-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===============================
+   Custom Class
+================================= */
+
+@layer utilities {
+  .font-chillax {
+    font-family: "Chillax", sans-serif;
+  }
+}
+
+
+/* Hide scrollbar but keep scrolling */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+@layer utilities {
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
