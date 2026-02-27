@@ -15,7 +15,7 @@ const services: Service[] = [
     title: "Digital Marketing",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015",
     description: "Accelerating your online growth through data-driven strategies and creative campaigns.",
-    subServices: ["Social Media", "Pay Per Click", "Email Campaigns", "Ads Campaigns"],
+    subServices: ["Social Media", "Pay Per Click", "SEO", "Ads Campaigns"],
   },
   {
     title: "Graphic Design",
@@ -59,14 +59,14 @@ export default function ServicesSection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="w-full bg-[#c2e8ff] overflow-x-hidden">
+    <section ref={containerRef} className="w-full bg-white overflow-x-hidden">
       {/* HEADER SECTION */}
-      <div className="max-w-7xl mx-auto px-6 py-24 md:py-40 overflow-hidden text-center">
+      <div className="max-w-7xl mx-auto px-6 py-12 md:py-20 overflow-hidden text-center">
         <h2
           ref={sectionTitleRef}
-          className="text-5xl md:text-8xl font-bold text-[#142c4c] tracking-tight leading-none uppercase italic font-anokha"
+          className="text-5xl md:text-8xl font-semibold text-[#142c4c] tracking-wider monda-swapnil"
         >
-          We Are Experts In
+          we are <span className="text-[#0098d4]">experts</span> in
         </h2>
       </div>
 
@@ -77,7 +77,7 @@ export default function ServicesSection() {
         ))}
       </div>
       
-      <div className="h-[20vh]" />
+      {/* <div className="h-[10vh]" /> */}
     </section>
   );
 }
@@ -195,14 +195,14 @@ function ServiceItem({ service }: { service: Service }) {
   }, []);
 
   return (
-    <div ref={itemContainerRef} className="relative h-screen w-full overflow-hidden bg-[#c2e8ff]">
+    <div ref={itemContainerRef} className="relative h-screen w-full overflow-hidden bg-white">
       
       {/* 1. INITIAL TEXT SIDE (Dynamic Description) */}
       <div
         ref={textSideRef}
         className="absolute z-10 flex flex-col items-center text-center px-6 w-full top-[15%] md:w-1/2 md:right-0 md:top-0 md:h-full md:px-12 md:justify-center"
       >
-        <h3 className="text-4xl md:text-7xl font-bold text-[#142c4c] tracking-tight uppercase font-anokha">
+        <h3 className="text-4xl md:text-7xl font-bold text-[#142c4c] tracking-wider  monda-swapnil">
           {service.title}
         </h3>
         {/* Render separate description here */}
@@ -217,7 +217,7 @@ function ServiceItem({ service }: { service: Service }) {
       {/* 2. EXPANDING IMAGE SIDE */}
       <div
         ref={imageWrapperRef}
-        className="absolute z-20 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] bg-gray-200 w-[85%] left-[7.5%] bottom-10 h-[45%] rounded-[40px] md:w-[45%] md:left-6 md:top-[5vh] md:h-[90vh] md:rounded-[60px]"
+        className="absolute z-20 overflow-hidden  bg-gray-200 w-[85%] left-[7.5%] bottom-10 h-[45%] rounded-[40px] md:w-[45%] md:left-6 md:top-[5vh] md:h-[90vh] md:rounded-[60px]"
       >
         <img
           ref={imageRef}
@@ -229,7 +229,7 @@ function ServiceItem({ service }: { service: Service }) {
         {/* 3. OVERLAY CONTENT (Tags) */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90 flex flex-col items-center justify-center text-white p-6 md:p-12">
           <div ref={revealContentRef} className="text-center w-full">
-            <h4 className="text-6xl md:text-[10vw] font-black mb-8 md:mb-14 tracking-tighter italic leading-[0.9] uppercase font-anokha">
+            <h4 className="text-6xl md:text-[10vw] font-black mb-8 md:mb-14 tracking-wider italic leading-[0.9] monda-swapnil">
               {service.title}
             </h4>
 

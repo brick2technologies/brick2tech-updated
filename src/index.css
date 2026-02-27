@@ -1,62 +1,52 @@
 @import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset to account for your floating navbar height + padding */
+section[id] {
+  scroll-margin-top: 100px;
+}
+
 /* 
 #0098d4 -- skyblue
 #142c4c -- darkblue
 */
 
 /* ===============================
-   ANOKHA FONT (TTF)
+   MONDA-SWAPNIL (Local OTF)
 ================================= */
 
 @font-face {
-  font-family: "Anokha";
-  src: url("./assets/fonts/anokha/Anokha.ttf") format("truetype");
-  font-weight: 400;
+  font-family: "Monda-swapnil";
+  src: url("./assets/fonts/Monda.otf") format("opentype");
   font-style: normal;
   font-display: swap;
 }
-
-
-
-@font-face {
-  font-family: "Anokha";
-  src: url("./assets/fonts/anokha/Anokha-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ===============================
-   Custom Class
-================================= */
 
 @layer utilities {
-  .font-anokha {
-    font-family: "Anokha", sans-serif;
+  .monda-swapnil {
+    font-family: "Monda-swapnil", sans-serif;
   }
 }
 
 /* ===============================
-   Chillax Font
+   ROBOTO (Google Font)
 ================================= */
-@font-face {
-  font-family: "Chillax";
-  src: url("./assets/fonts/chillax/Chillax-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+
+@theme {
+  --font-roboto: "Roboto", sans-serif;
 }
 
-/* ===============================
-   Custom Class
-================================= */
-
-@layer utilities {
-  .font-chillax {
-    font-family: "Chillax", sans-serif;
+@layer base {
+  p {
+    font-family: "Roboto", sans-serif;
   }
 }
-
+/* ===============================
+   Utilities
+================================= */
 
 /* Hide scrollbar but keep scrolling */
 .scrollbar-hide::-webkit-scrollbar {
@@ -68,11 +58,11 @@
   scrollbar-width: none;
 }
 
-
 @layer utilities {
   .perspective-1200 {
     perspective: 1200px;
   }
+
   .preserve-3d {
     transform-style: preserve-3d;
   }

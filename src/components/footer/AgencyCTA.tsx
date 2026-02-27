@@ -4,7 +4,7 @@ import CTABG from "../../assets/cta-bg.svg";
 
 const AgencyCTA = () => {
   return (
-    <section className="relative overflow-hidden py-20 md:py-32 px-6 flex justify-center items-center min-h-[600px] md:min-h-[800px] bg-[#c2e8ff]">
+    <section className="relative overflow-hidden py-20 md:py-32 px-6 flex justify-center items-center min-h-[600px] md:min-h-[800px] bg-white">
       
       {/* --- BACKGROUND IMAGE LAYER --- */}
       <div className="absolute inset-0 z-0">
@@ -35,7 +35,7 @@ const AgencyCTA = () => {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: false, amount: 0.4 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold text-[#142c4c] mb-6 md:mb-8 leading-[1.1] tracking-tighter font-anokha"
+          className="text-4xl sm:text-5xl md:text-7xl font-bold text-[#142c4c] mb-6 md:mb-8 leading-[1.1] tracking-wider monda-swapnil"
         >
           Discover a new dawn <br className="hidden md:block" /> for your content.
         </motion.h2>
@@ -61,7 +61,7 @@ const AgencyCTA = () => {
           <motion.button
             whileHover={{ y: -4, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full sm:w-auto px-10 md:px-12 py-4 bg-white text-[#142c4c] rounded-xl font-bold text-base md:text-lg shadow-xl hover:shadow-2xl transition-all font-chillax"
+            className="w-full sm:w-auto px-4 md:px-6 py-2 bg-white text-[#142c4c] rounded-xl font-bold text-base md:text-lg shadow-xl hover:shadow-2xl transition-all font-roboto"
           >
             Get started
           </motion.button>

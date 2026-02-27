@@ -39,8 +39,8 @@ export default function InfiniteClients({ logos }: InfiniteClientsProps) {
     <div className="py-12 overflow-hidden relative z-20">
 
       {/* Side fades */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#c2e8ff] to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#c2e8ff] to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#ffffff] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#ffffff] to-transparent z-10 pointer-events-none" />
 
       <motion.div
         className="flex gap-20 md:gap-32 items-center w-max"
