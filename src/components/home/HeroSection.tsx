@@ -1,12 +1,12 @@
 import React, { useRef, memo } from 'react';
 import { motion } from "framer-motion";
-import { 
-  Instagram, 
-  Linkedin, 
-  Youtube, 
-  Facebook, 
-  ArrowUpRight, 
-  type LucideIcon 
+import {
+  Instagram,
+  Linkedin,
+  Youtube,
+  Facebook,
+  ArrowUpRight,
+  type LucideIcon
 } from 'lucide-react';
 import InfiniteClients from '../ClientCarousel';
 
@@ -91,33 +91,33 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
   ], []);
 
   return (
-    <section 
-      id='hero' 
-      ref={containerRef} 
-      className="relative min-h-screen flex flex-col bg-white overflow-hidden pt-10"
+    <section
+      id='hero'
+      ref={containerRef}
+      className="relative min-h-screen flex flex-col bg-transparent overflow-hidden pt-10"
       aria-label="Introduction"
     >
       {/* 1. VIDEO CONTAINER */}
-      <div className="w-full h-[200px] md:h-[340px] mt-12 md:mt-20 relative overflow-hidden bg-transparent z-20 mx-auto max-w-[90%]">
-        <video 
-          className="w-full h-full object-cover rounded-[32px]" 
-          autoPlay 
-          muted 
-          loop 
+      <div className="w-full h-[200px] md:h-[340px] mt-12 md:mt-20 relative overflow-hidden bg-transparent z-20 mx-auto max-w-[90%] pointer-none">
+        <video
+          className="w-full h-full object-cover rounded-[32px]"
+          autoPlay
+          muted
+          loop
           playsInline
           preload="metadata"
           title="Marketing Agency Showreel"
         >
-          <source src="/marketing-showreel.mp4" type="video/mp4" />
+          <source src="/we-are-b2t.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
 
       {/* 2. CONTENT AREA */}
       <header className="flex-grow flex flex-col items-center justify-center py-12 px-6 relative z-30">
-        
+
         <div className="text-center max-w-5xl relative">
-          
+
           {/* HEADLINE WAVE */}
           <div className="absolute -top-12 md:-top-20 left-0 w-full h-10 pointer-events-none" role="presentation">
             <FloatingSocial icon={Instagram} delay={0} className="left-[5%] top-[20%] md:left-[10%] md:top-[20%]" />
@@ -133,7 +133,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
             className="text-4xl md:text-7xl text-[#142c4c] tracking-wider mb-8 font-bold relative z-20 monda-swapnil"
           >
             Dominate The <span className="text-[#0098d4]">Digital <br className="hidden md:block" />
-            Landscape</span> Today
+              Landscape</span> Today
           </motion.h1>
 
           <motion.p
@@ -152,21 +152,21 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
             transition={{ delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <a 
+            <a
               href="#work"
               className="group w-full sm:w-auto bg-[#142c4c] text-white px-10 py-4 rounded-xl font-mono text-md shadow-xl transition-all flex items-center justify-center gap-2 focus:ring-4 focus:ring-[#142c4c]/30 outline-none"
               aria-label="View our portfolio projects"
             >
-              View Work 
+              View Work
               <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
             </a>
 
-            <button 
+            <button
               onClick={onContactClick}
               className="group w-full sm:w-auto bg-[#0098d4] text-[#142c4c] px-10 py-4 rounded-xl font-mono text-md shadow-xl transition-all flex items-center justify-center gap-2 font-bold focus:ring-4 focus:ring-[#0098d4]/30 outline-none"
               aria-label="Open contact form"
             >
-              Contact Us 
+              Contact Us
               <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
             </button>
           </motion.div>
