@@ -13,6 +13,10 @@ interface Project {
   liveUrl: string;
 }
 
+interface WorkSectionProps {
+  onContactClick: () => void;
+}
+
 // --- Data ---
 const projects: Project[] = [
   {
@@ -20,7 +24,7 @@ const projects: Project[] = [
     title: "Nisargha",
     category: "Real Estate",
     description: "A comprehensive real estate website with premium property listings, lead generation, and digital marketing integration.",
-    image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&q=80",
+    image: "/Nisarga.jpeg",
     technologies: ["WordPress", "Digital Marketing", "Social Media Marketing"],
     liveUrl: "https://nisarghahyd.com"
   },
@@ -29,7 +33,7 @@ const projects: Project[] = [
     title: "Bridge Gap Hospitals",
     category: "Healthcare",
     description: "A modern healthcare website designed to build trust and improve patient engagement with streamlined appointment booking.",
-    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80",
+    image: "bgh.jpeg",
     technologies: ["Website Development", "Digital Marketing"],
     liveUrl: "https://bridgegaphospitals.com/"
   },
@@ -38,7 +42,7 @@ const projects: Project[] = [
     title: "Anumah Infra",
     category: "Real Estate",
     description: "A real estate brand website developed to showcase premium properties with high-converting landing pages.",
-    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80",
+    image: "/Anumah-infra.jpeg",
     technologies: ["Web Development", "Digital Marketing", "Social Media Marketing"],
     liveUrl: "https://www.anumahinfra.com/"
   },
@@ -47,7 +51,7 @@ const projects: Project[] = [
     title: "HK Gastro Hospital",
     category: "Healthcare",
     description: "A professional hospital website developed to showcase gastroenterology services and specialist doctors.",
-    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80",
+    image: "/Hk-gastro-Hospital.jpeg",
     technologies: ["Website Development"],
     liveUrl: "https://www.hkgastro.in/"
   },
@@ -56,7 +60,7 @@ const projects: Project[] = [
     title: "Shubha",
     category: "E-Commerce",
     description: "An online e-commerce platform developed for selling pooja samagri and festival essentials.",
-    image: "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=800&q=80",
+    image: "/Shubha.jpeg",
     technologies: ["E-Commerce", "Product Management", "Payment Integration"],
     liveUrl: "https://www.shubha.co.in/"
   },
@@ -65,7 +69,7 @@ const projects: Project[] = [
     title: "AMR Legacy",
     category: "Real Estate",
     description: "A professional real estate website designed to showcase premium residential projects with lead generation.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    image: "/Amr.jpeg",
     technologies: ["Website Development", "WhatsApp Marketing"],
     liveUrl: "https://amrlegacy.in/"
   },
@@ -74,7 +78,7 @@ const projects: Project[] = [
     title: "A360 Studio",
     category: "3D Design Studio",
     description: "A dynamic website developed for a 3D design studio to showcase architectural visualizations and portfolios.",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
+    image: "/a360-studio.jpg",
     technologies: ["Website Development", "Responsive Design", "Performance Optimization"],
     liveUrl: "https://a360studio.com/"
   },
@@ -83,7 +87,7 @@ const projects: Project[] = [
     title: "Metsonic",
     category: "Industrial",
     description: "A comprehensive industrial website developed to showcase material testing equipment and technical documentation.",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80",
+    image: "/Metsonic.jpeg",
     technologies: ["Website Development", "Product Catalog", "Lead Generation"],
     liveUrl: "https://metsonic.vercel.app/"
   },
@@ -91,8 +95,10 @@ const projects: Project[] = [
 
 // --- Custom Sub-Components ---
 
-const CustomButton = ({ children, className = "", ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
+// FIX: Explicitly destructure onClick and apply it to the <button>
+const CustomButton = ({ children, className = "", onClick, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
   <button
+    onClick={onClick}
     className={`flex items-center justify-center gap-2 bg-[#142c4c] text-white px-8 py-4 rounded-2xl font-bold 
     hover:bg-[#1c3d6a] transition-all duration-300 active:scale-95 shadow-lg shadow-[#142c4c]/20 outline-none focus-visible:ring-4 focus-visible:ring-[#142c4c]/30 ${className}`}
     {...props}
@@ -142,7 +148,7 @@ const CustomDialog = ({ isOpen, onClose, children }: { isOpen: boolean; onClose:
 
 // --- Main Portfolio Section ---
 
-export default function PortfolioSection() {
+export default function PortfolioSection({ onContactClick }: WorkSectionProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [rotation, setRotation] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -280,7 +286,8 @@ export default function PortfolioSection() {
           <MoveRight className="w-5 h-5 animate-pulse" />
         </div>
 
-        <CustomButton className="group px-12 py-5 text-xl rounded-xl font-anokha">
+        {/* Start a Project Button */}
+        <CustomButton onClick={onContactClick} className="group px-12 py-5 text-xl rounded-xl font-anokha">
           Start a Project <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
         </CustomButton>
       </div>

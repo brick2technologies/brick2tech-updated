@@ -46,23 +46,25 @@ export default function ServiceItem({ service }: { service: Service }) {
           trigger: itemContainerRef.current,
           start: "top top",
           end: "+=200%",
-          scrub: 1.5,
+          scrub: 1.2, // Slightly tightened from 1.5 to feel more responsive on mobile
           pin: true,
           pinSpacing: true,
+          anticipatePin: 1, // CRITICAL FOR MOBILE: Prevents jumping/stuttering when pinning starts
           onToggle: (self) => !self.isActive && setActiveSub(null), // Reset on leave
         },
+        defaults: { force3D: true } // Forces GPU hardware acceleration
       });
 
       if (!isDesktop) {
-        tl.to(imageWrapperRef.current, { height: "96%", width: "96%", left: "2%", top: "2%", borderRadius: "24px" }, 0)
-          .to(textSideRef.current, { opacity: 0, y: -100, filter: "blur(10px)" }, 0);
+        tl.to(imageWrapperRef.current, { height: "96%", width: "96%", left: "2%", top: "2%", borderRadius: "24px", ease: "none" }, 0)
+          .to(textSideRef.current, { opacity: 0, y: -100, filter: "blur(10px)", ease: "none" }, 0);
       } else {
-        tl.to(imageWrapperRef.current, { width: "96%", left: "2%", borderRadius: "40px" }, 0)
-          .to(textSideRef.current, { opacity: 0, x: -100, filter: "blur(10px)" }, 0);
+        tl.to(imageWrapperRef.current, { width: "96%", left: "2%", borderRadius: "40px", ease: "none" }, 0)
+          .to(textSideRef.current, { opacity: 0, x: -100, filter: "blur(10px)", ease: "none" }, 0);
       }
 
-      if (imageRef.current) tl.to(imageRef.current, { scale: 1.15 }, 0);
-      tl.fromTo(revealContentRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 }, "-=0.5");
+      if (imageRef.current) tl.to(imageRef.current, { scale: 1.15, ease: "none" }, 0);
+      tl.fromTo(revealContentRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "-=0.5");
     });
 
     return () => mm.revert();
@@ -71,19 +73,24 @@ export default function ServiceItem({ service }: { service: Service }) {
   // 2. Parallel Sub-Service Transition
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
-    const tl = gsap.timeline({ defaults: { duration: 0.7, ease: "power4.inOut" } });
+    
+    // Adjusted easing and duration for mobile to feel snappier and less "laggy"
+    const duration = isMobile ? 0.5 : 0.7; 
+    const ease = isMobile ? "power3.out" : "power4.inOut";
+
+    const tl = gsap.timeline({ defaults: { duration, ease, force3D: true } });
 
     if (activeSub) {
       if (isMobile) {
         tl.to(leftColRef.current, { y: -80, scale: 0.8, opacity: 1 }, 0);
-        tl.fromTo(rightColRef.current, { autoAlpha: 0, y: 100 }, { autoAlpha: 1, y: 0 }, 0);
+        tl.fromTo(rightColRef.current, { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0 }, 0); // Reduced travel distance for smoother reveal
       } else {
         tl.to(leftColRef.current, { xPercent: -25, scale: 0.7, opacity: 1 }, 0);
         tl.fromTo(rightColRef.current, { autoAlpha: 0, x: 100 }, { autoAlpha: 1, x: 0 }, 0);
       }
     } else {
       tl.to(leftColRef.current, { xPercent: 0, y: 0, scale: 1, opacity: 1 }, 0);
-      tl.to(rightColRef.current, { autoAlpha: 0, x: isMobile ? 0 : 50, y: isMobile ? 50 : 0 }, 0);
+      tl.to(rightColRef.current, { autoAlpha: 0, x: isMobile ? 0 : 50, y: isMobile ? 30 : 0 }, 0);
     }
 
     return () => { tl.kill(); };
@@ -103,7 +110,7 @@ export default function ServiceItem({ service }: { service: Service }) {
       </div>
 
       {/* 2. THE EXPANDING CARD */}
-      <div ref={imageWrapperRef} className="absolute z-20 overflow-hidden bg-[#0a0a0a] w-[85%] left-[7.5%] bottom-10 h-[45%] rounded-[40px] md:w-[45%] md:left-6 md:top-[5vh] md:h-[90vh] md:rounded-[60px] shadow-2xl will-change-[width,left,height,top]">
+      <div ref={imageWrapperRef} className="absolute z-20 overflow-hidden bg-[#0a0a0a] w-[85%] left-[7.5%] bottom-10 h-[45%] rounded-[40px] md:w-[45%] md:left-6 md:top-[5vh] md:h-[90vh] md:rounded-[60px]  will-change-[width,left,height,top]">
         <img 
           ref={imageRef} 
           src={service.image} 

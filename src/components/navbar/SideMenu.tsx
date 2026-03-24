@@ -127,7 +127,7 @@ const SideMenu = ({ isOpen, onClose }: Props) => {
                   animate={{ opacity: 1, y: 0 }}
                   src="/logo-default.png"
                   alt="Logo"
-                  className="h-8 md:h-10 w-auto object-contain"
+                  className="h-12 md:h-14 w-auto object-cover"
                 />
               </a>
               <div className="w-10 md:w-12" />
@@ -186,7 +186,7 @@ const SideMenu = ({ isOpen, onClose }: Props) => {
               transition={{ delay: 0.5 }}
               className="mt-6 bg-white rounded-[2rem] p-4 flex items-center justify-between shadow-sm border border-gray-100"
             >
-              <span className="text-[10px] tracking-[0.2em] font-bold text-gray-400 ml-2">FOLLOW US</span>
+              <span className="text-[8px] tracking-[0.2em] font-bold text-gray-400 ml-2">FOLLOW US</span>
               <div className="flex gap-2">
                 {[Youtube, Instagram, Facebook, Twitter].map((Icon, idx) => (
                   <motion.a 

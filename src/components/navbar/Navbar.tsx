@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-// Removed Link import as we are using standard anchor tags
 import SideMenu from "./SideMenu";
 import { ArrowUpRight } from "lucide-react";
 
@@ -11,7 +10,6 @@ interface NavLinkProps {
 }
 interface NavbarProps {
   onContactClick: () => void;
-  // onNavigate: (href: string) => void;
 }
 
 const NavLink = ({ href, children, isLogoHovered, scrolled }: NavLinkProps) => (
@@ -73,8 +71,8 @@ const Navbar = ({ onContactClick }: NavbarProps) => {
 
           {/* --- DESKTOP & TABLET NAVBAR --- */}
           <nav
-            className={`hidden md:flex ${smoothTransition} relative items-center justify-between px-6 h-14 overflow-hidden
-              ${!scrolled ? "bg-transparent w-full" : showFullPill ? "bg-[#142c4c] backdrop-blur-xl shadow-2xl rounded-2xl w-[900px]" : "bg-[#142c4c] backdrop-blur-xl shadow-lg rounded-3xl w-[160px]"}
+            className={`hidden md:flex ${smoothTransition} relative items-center justify-between px-6 h-16 overflow-hidden
+              ${!scrolled ? "bg-transparent w-full" : showFullPill ? "bg-[#142c4c] backdrop-blur-xl shadow-2xl rounded-2xl w-[980px] max-w-[95%]" : "bg-[#142c4c] backdrop-blur-xl shadow-lg rounded-3xl w-[200px]"}
             `}
           >
             {/* Left: Menu */}
@@ -88,18 +86,29 @@ const Navbar = ({ onContactClick }: NavbarProps) => {
             </div>
 
             {/* Center: Logo & ID Links */}
-            <div className="absolute left-1/2 -translate-x-1/2 flex items-center font-roboto" onMouseEnter={() => scrolled && setIsExpanded(true)}>
-              <div className={`flex items-center transition-all duration-700 ${scrolled && !showFullPill ? "opacity-0 scale-50 pointer-events-none" : "opacity-100 scale-100"} ${isLogoHovered ? "gap-2 mr-4" : "gap-8 mr-12"}`}>
+            <div className="absolute left-1/2 -translate-x-1/2 flex items-center font-roboto whitespace-nowrap" onMouseEnter={() => scrolled && setIsExpanded(true)}>
+              <div className={`flex items-center transition-all duration-700 ${scrolled && !showFullPill ? "opacity-0 scale-50 pointer-events-none" : "opacity-100 scale-100"} ${isLogoHovered ? "gap-2 mr-4" : "gap-4 lg:gap-8 mr-4 lg:mr-10"}`}>
                 <NavLink href="#services" isLogoHovered={isLogoHovered} scrolled={scrolled}>Services</NavLink>
                 <NavLink href="#work" isLogoHovered={isLogoHovered} scrolled={scrolled}>Work</NavLink>
               </div>
 
-              <a href="#hero" className="group/logo relative w-24 h-12 flex items-center justify-center shrink-0 z-50" onMouseEnter={() => setIsLogoHovered(true)} onMouseLeave={() => setIsLogoHovered(false)}>
-                <img src="/logo-default.png" alt="Logo" className="absolute h-full w-auto object-contain transition-all duration-700 group-hover/logo:opacity-0" />
-                <img src="/logo-hover.png" alt="Logo Hover" className="absolute h-full w-auto object-contain opacity-0 transition-all duration-700 group-hover/logo:opacity-100" />
+              {/* DESKTOP LOGOS: Correctly toggle between default and white based on scroll */}
+              <a href="#hero" className="group/logo relative w-48 h-16 flex items-center justify-center shrink-0 z-50" onMouseEnter={() => setIsLogoHovered(true)} onMouseLeave={() => setIsLogoHovered(false)}>
+                {/* Image 1: Normal Logo (fades out when scrolled) */}
+                <img 
+                  src="/logo-default.png" 
+                  alt="Logo" 
+                  className={`absolute w-full h-full object-contain transition-all duration-700 ${scrolled ? "opacity-0" : "opacity-100"}`} 
+                />
+                {/* Image 2: White Logo (fades in when scrolled) */}
+                <img 
+                  src="/logo-default-white.png" 
+                  alt="Logo White" 
+                  className={`absolute w-full h-full object-contain transition-all duration-700 ${scrolled ? "opacity-100" : "opacity-0"}`} 
+                />
               </a>
 
-              <div className={`flex items-center transition-all duration-700 ${scrolled && !showFullPill ? "opacity-0 scale-50 pointer-events-none" : "opacity-100 scale-100"} ${isLogoHovered ? "gap-2 ml-4" : "gap-8 ml-12"}`}>
+              <div className={`flex items-center transition-all duration-700 ${scrolled && !showFullPill ? "opacity-0 scale-50 pointer-events-none" : "opacity-100 scale-100"} ${isLogoHovered ? "gap-2 ml-4" : "gap-4 lg:gap-8 ml-4 lg:ml-10"}`}>
                 <NavLink href="#about" isLogoHovered={isLogoHovered} scrolled={scrolled}>About</NavLink>
                 <NavLink href="#contact" isLogoHovered={isLogoHovered} scrolled={scrolled}>Contact</NavLink>
               </div>
@@ -109,7 +118,6 @@ const Navbar = ({ onContactClick }: NavbarProps) => {
             <div className={`shrink-0 flex items-center ${smoothTransition} ${scrolled && !showFullPill ? "opacity-0 -translate-x-10 pointer-events-none" : "opacity-100 translate-x-0"}`}>
               <button
                 onClick={onContactClick}
-
                 className={`group relative h-10 px-6 flex items-center gap-2 justify-center rounded-xl text-sm uppercase tracking-widest transition-all duration-300 shadow-md hover:shadow-lg 
                 ${!scrolled ? "bg-[#142c4c] text-white" : "bg-white text-[#142c4c]"}`}
               >
@@ -126,12 +134,14 @@ const Navbar = ({ onContactClick }: NavbarProps) => {
               ${!scrolled
                 ? "bg-transparent w-full justify-between px-4"
                 : showFullPill
-                  ? "bg-[#142c4c] backdrop-blur-xl shadow-2xl rounded-2xl min-w-[240px] w-auto justify-between px-4 gap-8 h-14 border border-white/10"
-                  : "bg-[#142c4c] backdrop-blur-xl shadow-lg text-white rounded-xl w-[140px] justify-center gap-3 px-2 h-14 border border-black/10"
+                  // FIX: Adjusted mobile pill width to fit screen better without awkward spacing
+                  ? "bg-[#142c4c] backdrop-blur-xl shadow-2xl rounded-2xl w-[90%] justify-between px-4 h-14 border border-white/10"
+                  : "bg-[#142c4c] backdrop-blur-xl shadow-lg text-white rounded-xl w-[160px] justify-center gap-3 px-2 h-14 border border-black/10"
               }
             `}
           >
-            <div className="shrink-0 flex items-center z-10">
+            {/* Mobile Menu Button */}
+            <div className={`shrink-0 flex items-center z-10 transition-all duration-500 ${scrolled && !showFullPill ? "opacity-0 w-0 overflow-hidden" : "opacity-100 w-11"}`}>
               <button
                 onClick={(e) => { e.stopPropagation(); setMenuOpen(true); }}
                 className={`w-11 h-11 flex items-center justify-center rounded-xl transition-all duration-500 active:scale-90
@@ -145,17 +155,26 @@ const Navbar = ({ onContactClick }: NavbarProps) => {
               </button>
             </div>
 
-            <div className="flex items-center justify-center flex-1">
-              <a href="#hero" className="flex items-center justify-center">
+            {/* MOBILE LOGO */}
+            <div className={`flex items-center justify-center flex-1 transition-all duration-500`}>
+              <a href="#hero" className="flex items-center justify-center w-36 h-12 relative">
+                {/* Image 1: Normal Logo (Mobile) */}
                 <img
-                  src={(scrolled && !showFullPill) ? "/logo-hover.png" : "/logo-default.png"}
+                  src="/logo-default.png"
                   alt="Logo"
-                  className="h-10 w-auto object-contain transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
+                  className={`absolute w-full h-full object-contain transition-all duration-500 ${scrolled ? "opacity-0" : "opacity-100"}`}
+                />
+                {/* Image 2: White Logo (Mobile) */}
+                <img
+                  src="/logo-default-white.png"
+                  alt="Logo White"
+                  className={`absolute w-full h-full object-contain transition-all duration-500 ${scrolled ? "opacity-100" : "opacity-0"}`}
                 />
               </a>
             </div>
 
-            {showFullPill && <div className="w-11 shrink-0" />}
+            {/* Spacer to keep logo perfectly centered when expanded on mobile */}
+            <div className={`shrink-0 transition-all duration-500 ${scrolled && !showFullPill ? "w-0 opacity-0" : "w-11 opacity-100"}`} />
           </nav>
 
         </header>

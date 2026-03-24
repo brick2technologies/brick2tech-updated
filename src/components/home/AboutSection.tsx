@@ -1,8 +1,7 @@
 import { useEffect, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CustomButton } from '../Button';
-import { ArrowRight } from 'lucide-react';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -86,7 +85,7 @@ const About = () => {
             {/* Main Image */}
             <div className="brick-image absolute top-0 left-0 w-4/5 h-4/5 z-20 rounded-3xl overflow-hidden shadow-2xl bg-slate-100">
               <img 
-                src="/api/placeholder/600/800" 
+                src="/about.jpeg" 
                 alt="Digital engineering office" 
                 className="w-full h-full object-cover"
                 loading="lazy" 
@@ -95,14 +94,14 @@ const About = () => {
             {/* Accent Image 1 */}
             <div className="brick-image absolute bottom-0 right-0 w-1/2 h-1/2 z-30 rounded-3xl overflow-hidden shadow-xl border-8 border-[#0098d4] bg-slate-200">
               <img 
-                src="/api/placeholder/400/400" 
+                src="/about1.jpeg" 
                 alt="Strategy planning session" 
                 className="w-full h-full object-cover"
                 loading="lazy" 
               />
             </div>
             {/* Decorative Background Brick */}
-            <div className="brick-image absolute top-20 right-10 w-24 h-24 bg-[#c2e8ff] -z-10 rounded-2xl rotate-12" aria-hidden="true" />
+            {/* <div className="brick-image absolute top-20 right-10 w-24 h-24 bg-[#c2e8ff] -z-10 rounded-2xl rotate-12" aria-hidden="true" /> */}
           </div>
 
           {/* Right Side: Content */}
@@ -138,11 +137,11 @@ const About = () => {
               </div>
             </div>
 
-            <div className="about-animate-up">
+            {/* <div className="about-animate-up">
               <CustomButton className="group px-8 py-3 text-xl rounded-xl mt-8">
                 Learn More <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
               </CustomButton>
-            </div>
+            </div> */}
           </div>
 
         </div>

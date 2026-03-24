@@ -21,9 +21,9 @@ const Footer = () => {
             <div className="col-span-1 md:col-span-1">
               <Link to="/" className="inline-block mb-8">
                 <img
-                  src="/logo-default.png"
+                  src="/logo-default-white.png"
                   alt="Logo"
-                  className="h-16 w-auto brightness-0 invert"
+                  className="h-20 w-auto"
                 />
               </Link>
               <p className="text-white/50 text-sm leading-relaxed mb-8 max-w-xs font-medium">
@@ -31,9 +31,9 @@ const Footer = () => {
               </p>
               <div className="flex gap-5">
                 {[
-                  { icon: <Facebook size={16} />, link: "https://twitter.com" },
-                  { icon: <Linkedin size={16} />, link: "https://linkedin.com" },
-                  { icon: <Instagram size={16} />, link: "https://instagram.com" },
+                  { icon: <Facebook size={16} />, link: "https://www.facebook.com/brick2technologies/" },
+                  { icon: <Linkedin size={16} />, link: "https://www.linkedin.com/company/brick2technologies" },
+                  { icon: <Instagram size={16} />, link: "https://www.instagram.com/brick2technologies/" },
                 ].map((social, index) => (
                   <a
                     key={index}
@@ -56,9 +56,9 @@ const Footer = () => {
             <div>
               <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-white/30 mb-10">What We Do</h4>
               <ul className="space-y-5 text-sm text-white/70">
-                <li><Link to="/seo" className="hover:text-white transition-colors">Digital Marketing</Link></li>
-                <li><Link to="/content" className="hover:text-white transition-colors">Web Development</Link></li>
-                <li><Link to="/ads" className="hover:text-white transition-colors">Graphic Design</Link></li>
+                <li><a href="#services" className="hover:text-white transition-colors">Digital Marketing</a></li>
+                <li><a href="#services" className="hover:text-white transition-colors">Web Development</a></li>
+                <li><a href="#services" className="hover:text-white transition-colors">Graphic Design</a></li>
                 
               </ul>
             </div>
@@ -67,9 +67,9 @@ const Footer = () => {
             <div>
               <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-white/30 mb-10">Agency</h4>
               <ul className="space-y-5 text-sm text-white/70">
-                <li><Link to="/work" className="hover:text-white transition-colors">Our Work</Link></li>
-                <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
-                <li><Link to="/careers" className="hover:text-white transition-colors">Careers</Link></li>
+                <li><a href="#work" className="hover:text-white transition-colors">Our Work</a></li>
+                <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
+                <li><a href="#services" className="hover:text-white transition-colors">services</a></li>
                 <li className="pt-6 text-xs text-white/40 leading-relaxed uppercase tracking-widest">
                   MIG-6, Sunrise Residency 202,<br />
                   Manikonda, Hyderabad
