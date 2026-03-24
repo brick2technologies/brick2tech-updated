@@ -98,20 +98,25 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
       aria-label="Introduction"
     >
       {/* 1. VIDEO CONTAINER */}
-      <div className="w-full h-[200px] md:h-[340px] mt-12 md:mt-20 relative overflow-hidden bg-transparent z-20 mx-auto max-w-[90%] pointer-none">
-        <video
-          className="w-full h-full object-cover rounded-[32px]"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          title="Marketing Agency Showreel"
-        >
-          <source src="/we-are-b2t.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      <div className="w-full h-[200px] md:h-[340px] mt-12 md:mt-20 relative overflow-hidden bg-transparent z-20 mx-auto max-w-[90%] pointer-events-none">
+  <video
+    className="w-full h-full object-cover rounded-[32px]"
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="auto"
+    title="Marketing Agency Showreel"
+  >
+    {/* WebM format for Chrome/Firefox/Edge optimization */}
+    <source src="/we-are-b2t.webm" type="video/webm" />
+    
+    {/* MP4 format as the universal fallback (Safari, older browsers) */}
+    <source src="/we-are-b2t.mp4" type="video/mp4" />
+    
+    Your browser does not support the video tag.
+  </video>
+</div>
 
       {/* 2. CONTENT AREA */}
       <header className="flex-grow flex flex-col items-center justify-center py-12 px-6 relative z-30">
